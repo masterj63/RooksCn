@@ -64,7 +64,7 @@ class Main {
             jTextArea.append("3/7. matrices sorted.\n");
 
             boolean bool = ClassificationChecker.check(boardsList, sort);
-            jTextArea.append("4/7. classification checked: " + bool + ".\n");
+            jTextArea.append("4/7. classification checked [TODO]: " + bool + ".\n");
 
             List<List<Integer>> layers = LayersBySort.get(sort);
             jTextArea.append("5/7. layers computed.\n");
@@ -76,7 +76,7 @@ class Main {
             jTextArea.append("6/7. i'm done.\n");
 
             int nonEu = Euler.get(layers, sort);
-            jTextArea.append("7/7. non-eulerity is " + nonEu + " \n");
+            jTextArea.append("7/7. non-eulerity is [TODO]" + nonEu + " \n");
         } catch (Throwable error) {
             error.printStackTrace(System.out);
             jTextArea.append("Report may be corrupted!!\n");

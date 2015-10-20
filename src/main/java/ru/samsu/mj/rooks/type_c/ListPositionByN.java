@@ -1,6 +1,7 @@
 package ru.samsu.mj.rooks.type_c;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ListPositionByN {
@@ -10,6 +11,7 @@ public class ListPositionByN {
     static List<byte[]> get() {
         res = new ArrayList<>();
         arr = new byte[Main.N];
+        Arrays.fill(arr, (byte) -1);
         rec(0);
         return res;
     }
@@ -20,10 +22,13 @@ public class ListPositionByN {
             return;
         }
 
-        arr[pos] = -1;
         rec(1 + pos);
 
-        for (byte j = 0; j < pos; j++) {
+        int maxPos = Math.min(pos, Main.N - pos);
+
+        for (byte j = 0; j < maxPos; j++) {
+            if (arr[pos] != -1)
+                continue;
             boolean used = false;
             for (int k = 0; k < pos; k++)
                 used |= j == arr[k];
@@ -35,10 +40,18 @@ public class ListPositionByN {
 
             if (used)
                 continue;
+
             arr[pos] = j;
+            
+            int r = Main.N - pos - j - 1;
+            int i1 = pos + r, i2 = j + d;
+            arr[i1] = (byte) i2;
+
             rec(1 + pos);
+
+            arr[i1] = -1;
+            arr[pos] = -1;
         }
 
-        arr[pos] = -1;
     }
 }

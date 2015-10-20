@@ -2,7 +2,7 @@ package ru.samsu.mj.rooks.type_c;
 
 import java.util.List;
 
-public class MatricesByListPosition {
+class MatricesByListPosition {
     static byte[][][] get(List<byte[]> list) {
         byte[][][] res = new byte[list.size()][Main.N][];
         for (int i = 0; i < list.size(); i++) {
@@ -28,9 +28,7 @@ public class MatricesByListPosition {
                     byte leftBottom = lOk && bOk ? t[1 + j][j2 - 1] : 0;
 
                     t[j][j2] = (byte) (left + bottom - leftBottom);
-                    int r = Main.N - 1 - j - j2;
-                    int i1 = j + r, i2 = j2 + d;
-                    if (a[j] == j2 || a[i1] == i2)
+                    if (a[j] == j2)
                         t[j][j2]++;
                 }
 
@@ -50,6 +48,7 @@ public class MatricesByListPosition {
 
             res[i] = t;
         }
+
         return res;
     }
 }
