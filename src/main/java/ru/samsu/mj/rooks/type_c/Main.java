@@ -63,8 +63,8 @@ class Main {
             List<Integer>[] sort = Sorter.sort(matrices);
             jTextArea.append("3/7. matrices sorted.\n");
 
-            boolean bool = ClassificationChecker.check(boardsList, sort);
-            jTextArea.append("4/7. classification checked [TODO]: " + bool + ".\n");
+//            boolean bool = ClassificationChecker.check(boardsList, sort);
+//            jTextArea.append("4/7. classification checked [TODO/NONE]: " + bool + ".\n");
 
             List<List<Integer>> layers = LayersBySort.get(sort);
             jTextArea.append("5/7. layers computed.\n");

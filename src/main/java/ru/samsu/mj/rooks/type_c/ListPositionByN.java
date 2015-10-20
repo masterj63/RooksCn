@@ -42,7 +42,7 @@ public class ListPositionByN {
                 continue;
 
             arr[pos] = j;
-            
+
             int r = Main.N - pos - j - 1;
             int i1 = pos + r, i2 = j + d;
             arr[i1] = (byte) i2;
