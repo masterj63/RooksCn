@@ -1,0 +1,32 @@
+version '1.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'ru.samsu.mj.rooks.type_c.Main',
+                'Implementation-Title': 'Rooks-C_n',
+                'Implementation-Version': version
+    }
+    baseName = project.name + '-all'
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    exclude 'META-INF/*.DSA', 'META-INF/*.SF'
+}
+
+task runJar(dependsOn: jar) << {
+    javaexec { main = "-jar"; args jar.archivePath }
+}
