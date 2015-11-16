@@ -30,7 +30,7 @@ class Canvas {
         pxBetweenNum = 15;
         pxBetweenMat = 200 + Main.N * pxBetweenNum;
 
-        JFrame jFrame = new JFrame("Rooks");
+        JFrame jFrame = new JFrame("Rooks C_2n");
         jFrame.setPreferredSize(new Dimension(800, 600));
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

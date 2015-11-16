@@ -1,7 +1,11 @@
+package ru.samsu.mj.rooks.type_a;
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -13,7 +17,7 @@ class Main {
     static StringBuilder toReport = new StringBuilder();
 
     public static void main(String[] args) {
-        JFrame jFrame = new JFrame("log");
+        JFrame jFrame = new JFrame("log An");
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jFrame.setPreferredSize(new Dimension(300, 300));
 
@@ -32,7 +36,7 @@ class Main {
         try {
             String answer = JOptionPane.showInputDialog(null, "What is the dimension?", Integer.toString(N));
             N = Integer.parseInt(answer);
-        } catch (Throwable throwable) {
+        } catch (NumberFormatException numberFormatException) {
         }
 
         jTextArea.append(format("Dimension set to %d.\n\n", N));
@@ -52,7 +56,9 @@ class Main {
 
             List<byte[]> boardsList = ListPositionByN.get();
             jTextArea.append("1/7. positions computed.\n");
+            boardsList = filterAsymmetric(boardsList);
             boardsListSize = boardsList.size();
+
 
             byte[][][] matrices = MatricesByListPosition.get(boardsList);
             jTextArea.append("2/7. boards computed.\n");
@@ -60,8 +66,8 @@ class Main {
             List<Integer>[] sort = Sorter.sort(matrices);
             jTextArea.append("3/7. matrices sorted.\n");
 
-            boolean bool = ClassificationChecker.check(boardsList, sort);
-            jTextArea.append("4/7. classification checked: " + bool + ".\n");
+//            boolean bool = ClassificationChecker.check(boardsList, sort);
+//            jTextArea.append("4/7. classification checked: " + bool + ".\n");
 
             List<List<Integer>> layers = LayersBySort.get(sort);
             jTextArea.append("5/7. layers computed.\n");
@@ -102,5 +108,37 @@ class Main {
         jTextArea.append("Theoretically, boards may not display properly due to technical reasons.\n");
         jTextArea.append("But I tested the app with JDK8 under Windows 7 and OS X and Ubuntu so they must be shown correctly.\n\n");
         jTextArea.append("You may double-click the panel to switch between views.\n\n");
+    }
+
+    private static List<byte[]> filterAsymmetric(List<byte[]> list) {
+        int N = Main.N - 1;
+
+        List<byte[]> res = new ArrayList<>();
+        for (byte[] b : list) {
+            boolean good = true;
+
+            for (int i = 1; i < b.length; i++) {
+                if (b[i] == -1)
+                    continue;
+                int x = b[i], y = i;
+                if (y == N - x)
+                    continue;
+                if (y < N - x) {//top
+                    int d = N - x - y;
+                    int yy = y + d, xx = x + d;
+                    if (b[yy] != xx)
+                        good = false;
+                } else {//right
+                    int d = x - N + y;
+                    int yy = y - d, xx = x - d;
+                    if (b[yy] != xx)
+                        good = false;
+                }
+            }
+
+            if (good)
+                res.add(b);
+        }
+        return res;
     }
 }

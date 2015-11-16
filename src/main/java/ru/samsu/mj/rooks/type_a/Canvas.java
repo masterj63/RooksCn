@@ -1,3 +1,5 @@
+package ru.samsu.mj.rooks.type_a;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -8,27 +10,20 @@ import java.util.List;
 import java.util.Map;
 
 class Canvas {
+    private final static int W = 180, H = 60;//max dim of label; note this if something goes wrong
     private final JPanel jPanel;
-
     private final int pxBetweenNum;
     private final int pxBetweenMat;
-
     private int maxWidth = 0, maxHeight = 0;
-    private final static int W = 180, H = 60;//max dim of label; note this if something goes wrong
-
     private Map<Integer, Point> indCoordMap = new HashMap<>();
     private List<JLabel> matricesJLabelList = new ArrayList<>();
     private List<JLabel> boardsJLabelList = new ArrayList<>();
-
-    static void draw(List<List<Integer>> layers, List<Integer>[] sort, List<byte[]> boards, byte[][][] matrices) {
-        new Canvas(layers, sort, boards, matrices);
-    }
 
     private Canvas(List<List<Integer>> layers, List<Integer>[] sort, List<byte[]> boards, byte[][][] matrices) {
         pxBetweenNum = 15;
         pxBetweenMat = 200 + Main.N * pxBetweenNum;
 
-        JFrame jFrame = new JFrame("Rooks");
+        JFrame jFrame = new JFrame("Rooks A_n");
         jFrame.setPreferredSize(new Dimension(800, 600));
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +47,10 @@ class Canvas {
         jFrame.repaint();
 
         drawArrows(sort);
+    }
+
+    static void draw(List<List<Integer>> layers, List<Integer>[] sort, List<byte[]> boards, byte[][][] matrices) {
+        new Canvas(layers, sort, boards, matrices);
     }
 
     private void drawArrows(final List<Integer>[] sort) {
@@ -198,6 +197,10 @@ class Canvas {
         }
     }
 
+    private enum CurrentState {
+        BOARDS, MATRICES
+    }
+
     private class RepaintMouseListener extends MouseAdapter {
         private CurrentState state = CurrentState.MATRICES;
 
@@ -233,9 +236,5 @@ class Canvas {
                 jPanel.repaint();
             }
         }
-    }
-
-    private enum CurrentState {
-        BOARDS, MATRICES
     }
 }

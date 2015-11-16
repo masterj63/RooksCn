@@ -15,7 +15,7 @@ class Main {
     static StringBuilder toReport = new StringBuilder();
 
     public static void main(String[] args) {
-        JFrame jFrame = new JFrame("log");
+        JFrame jFrame = new JFrame("log Cn");
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jFrame.setPreferredSize(new Dimension(300, 300));
 
@@ -34,7 +34,7 @@ class Main {
         try {
             String answer = JOptionPane.showInputDialog(null, "What is the dimension?", Integer.toString(N));
             N = Integer.parseInt(answer);
-        } catch (Throwable throwable) {
+        } catch (NumberFormatException numberFormatException) {
         }
 
         jTextArea.append(format("Dimension set to %d.\n\n", N));

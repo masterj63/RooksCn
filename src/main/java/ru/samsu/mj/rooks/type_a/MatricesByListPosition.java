@@ -1,3 +1,5 @@
+package ru.samsu.mj.rooks.type_a;
+
 import java.util.List;
 
 class MatricesByListPosition {

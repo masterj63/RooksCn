@@ -1,3 +1,5 @@
+package ru.samsu.mj.rooks.type_a;
+
 class MatrixComparator {
     static int compare(byte[][] a, byte[][] b) {
         boolean less = false, greater = false;
