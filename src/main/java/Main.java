@@ -69,8 +69,8 @@ class Main {
                 maxLayerSize = Math.max(maxLayerSize, t.size());
             layersNum = layers.size();
 
-            Canvas.draw(layers, sort, boardsList, matrices);
-            jTextArea.append("6/7. i'm done.\n");
+//            Canvas.draw(layers, sort, boardsList, matrices);
+//            jTextArea.append("6/7. i'm done.\n");
 
             int nonEu = Euler.get(layers, sort);
             jTextArea.append("7/7. non-eulerity is " + nonEu + " \n");
