@@ -57,23 +57,27 @@ class Main {
             byte[][][] matrices = MatricesByListPosition.get(boardsList);
             jTextArea.append("2/7. boards computed.\n");
 
-            List<Integer>[] sort = Sorter.sort(matrices);
-            jTextArea.append("3/7. matrices sorted.\n");
+            HotfixTest.doTest(boardsList, matrices);
+            jTextArea.append("2.5/7. hotfix run.\n");
 
-            boolean bool = ClassificationChecker.check(boardsList, sort);
-            jTextArea.append("4/7. classification checked: " + bool + ".\n");
+//            List<Integer>[] sort = Sorter.sort(matrices);
+//            jTextArea.append("3/7. matrices sorted.\n");
 
-            List<List<Integer>> layers = LayersBySort.get(sort);
-            jTextArea.append("5/7. layers computed.\n");
-            for (List<Integer> t : layers)
-                maxLayerSize = Math.max(maxLayerSize, t.size());
-            layersNum = layers.size();
+//            boolean bool = ClassificationChecker.check(boardsList, sort);
+//            jTextArea.append("4/7. classification checked: " + bool + ".\n");
+
+//            List<List<Integer>> layers = LayersBySort.get(sort);
+//            jTextArea.append("5/7. layers computed.\n");
+//            for (List<Integer> t : layers)
+//                maxLayerSize = Math.max(maxLayerSize, t.size());
+//            layersNum = layers.size();
 
 //            Canvas.draw(layers, sort, boardsList, matrices);
 //            jTextArea.append("6/7. i'm done.\n");
 
-            int nonEu = Euler.get(layers, sort);
-            jTextArea.append("7/7. non-eulerity is " + nonEu + " \n");
+//            int nonEu = Euler.get(layers, sort);
+//            jTextArea.append("7/7. non-eulerity is " + nonEu + " \n");
+            jTextArea.append("7/7. ");
         } catch (Throwable error) {
             error.printStackTrace(System.out);
             jTextArea.append("Report may be corrupted!!\n");
