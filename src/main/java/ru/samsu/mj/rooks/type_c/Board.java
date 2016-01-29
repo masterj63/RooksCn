@@ -3,8 +3,8 @@ package ru.samsu.mj.rooks.type_c;
 import java.util.Arrays;
 
 class Board {
-    private final byte[] board;
     final int size;
+    private final byte[] board;
 
     Board(byte[] board) {
         if (board == null)

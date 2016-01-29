@@ -6,11 +6,9 @@ import java.util.List;
 import java.util.Set;
 
 class LayersBySort {
-    static List<List<Integer>> get(List<Integer>[] sort) {
-        LayersBySort instance = new LayersBySort(sort);
-        return instance.LAYERS;
-    }
-
+    private final List<Integer>[] SORT;
+    private final List<List<Integer>> LAYERS;
+    private final List<Set<Integer>> LAYERS_SET;
     private LayersBySort(List<Integer>[] sort) {
         this.SORT = sort;
         this.LAYERS = new ArrayList<>();
@@ -31,9 +29,10 @@ class LayersBySort {
         dfs(min, 0);
     }
 
-    private final List<Integer>[] SORT;
-    private final List<List<Integer>> LAYERS;
-    private final List<Set<Integer>> LAYERS_SET;
+    static List<List<Integer>> get(List<Integer>[] sort) {
+        LayersBySort instance = new LayersBySort(sort);
+        return instance.LAYERS;
+    }
 
     private void dfs(int pos, int layer) {
         while (LAYERS_SET.size() <= layer)//btw while is replaceable by just if, but let's let it be for the sake of safety

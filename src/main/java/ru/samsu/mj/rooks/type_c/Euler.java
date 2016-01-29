@@ -18,6 +18,12 @@ class Euler {
         this.used = new int[sort.length];
     }
 
+    static int get(List<List<Integer>> layers, List<Integer>[] sort) {
+        //TODO to implement
+        return 0;
+//        return new Euler(layers, sort).run();
+    }
+
     private int run() {
         int nonEulerity = 0;
 
@@ -69,11 +75,5 @@ class Euler {
             used[posInd] = -1;
             return false;
         }
-    }
-
-    static int get(List<List<Integer>> layers, List<Integer>[] sort) {
-        //TODO to implement
-        return 0;
-//        return new Euler(layers, sort).run();
     }
 }

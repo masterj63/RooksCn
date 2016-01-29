@@ -1,8 +1,9 @@
 package ru.samsu.mj.rooks.type_c;
 
-import java.util.*;
-
-import static java.util.Arrays.fill;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 class ClassificationChecker {
     private final Board[] boards;
