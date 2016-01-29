@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ListPositionByN {
+ class ListPositionByN {
     private static List<byte[]> res;
     private static byte[] arr;
 
