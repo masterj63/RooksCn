@@ -1,3 +1,5 @@
+package ru.samsu.mj.rooks.type_a;
+
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;

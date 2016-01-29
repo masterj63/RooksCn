@@ -1,3 +1,5 @@
+package ru.samsu.mj.rooks.type_a;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,6 +16,10 @@ class Euler {
         this.layers = layers;
         this.sort = sort;
         this.used = new int[sort.length];
+    }
+
+    static int get(List<List<Integer>> layers, List<Integer>[] sort) {
+        return new Euler(layers, sort).run();
     }
 
     private int run() {
@@ -67,9 +73,5 @@ class Euler {
             used[posInd] = -1;
             return false;
         }
-    }
-
-    static int get(List<List<Integer>> layers, List<Integer>[] sort) {
-        return new Euler(layers, sort).run();
     }
 }

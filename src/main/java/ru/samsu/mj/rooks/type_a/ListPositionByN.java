@@ -1,12 +1,12 @@
+package ru.samsu.mj.rooks.type_a;
+
 import java.util.ArrayList;
 import java.util.List;
 
 class ListPositionByN {
-    static List<byte[]> get() {
-        ListPositionByN instance = new ListPositionByN();
-        return instance.list;
-    }
-
+    private final int N;
+    private final List<byte[]> list;
+    private final byte[] arr;
     private ListPositionByN() {
         this.N = Main.N;
         this.list = new ArrayList<>();
@@ -14,9 +14,10 @@ class ListPositionByN {
         rec(0);
     }
 
-    private final int N;
-    private final List<byte[]> list;
-    private final byte[] arr;
+    static List<byte[]> get() {
+        ListPositionByN instance = new ListPositionByN();
+        return instance.list;
+    }
 
     private void rec(final int pos) {
         if (arr.length == pos) {

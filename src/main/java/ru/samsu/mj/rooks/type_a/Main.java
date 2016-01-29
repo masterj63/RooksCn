@@ -1,3 +1,5 @@
+package ru.samsu.mj.rooks.type_a;
+
 import javax.swing.*;
 import java.awt.*;
 import java.text.DateFormat;
